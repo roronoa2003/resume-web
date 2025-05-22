@@ -23,6 +23,7 @@
         }
     </style>
 </head>
+
 <script>
     tailwind.config = {
       theme: {
@@ -40,29 +41,34 @@
 <body class="bg-[#141414] min-h-screen flex flex-col items-center justify-center px-4">
     <div id="transition-overlay" class="fixed inset-0 z-50 flex items-center justify-center">
         <img src="./intro.gif" alt="Transition" class="w-full h-full object-cover">
+        <audio id="intro-audio" src="./nouveau-jingle-netflix.mp3" autoplay hidden></audio>
     </div>
+    
     <script>
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const overlay = document.getElementById('transition-overlay');
             const profiles = document.getElementById('netflix-profiles');
-        
-            // Reduce this time to show the GIF for a shorter duration
+            const audio = document.getElementById('intro-audio');
+    
+            // Attempt autoplay without interaction
+            audio.play();
+    
             setTimeout(() => {
-                overlay.style.transition = 'opacity 0.5s'; // Reduce fade-out time
+                overlay.style.transition = 'opacity 0.5s';
                 overlay.style.opacity = '0';
-        
-                // Reduce this time to make the fade-out quicker
+    
                 setTimeout(() => {
                     overlay.style.display = 'none';
                     profiles.classList.remove('hidden');
-                }, 500); // Reduced from 1000ms to 500ms
-            }, 1000); // Reduced from 2000ms to 1000ms
+                }, 500);
+            }, 1000);
         });
-        </script><!-- Netflix Profile Selection -->
-    <div id="netflix-profiles" class="w-full">
+    </script>
+    <!-- Netflix Profile Selection -->
+    <div id="netflix-profiles" class="w-full -mt-[200px]">
         <header class="w-full max-w-7xl flex justify-start pt-8 pl-8 sm:pl-16">
             <h1 class="text-[#E50914] font-bold text-3xl sm:text-4xl leading-none select-none" style="font-family: 'Netflix Sans', system-ui, sans-serif;">
-                NETFLIX
+                <img src="/Users/rohaniyer/Downloads/resume/netflix.png" width="200" height="150">
             </h1>
         </header>
         <main class="flex flex-col items-center mt-20 sm:mt-28">
@@ -87,6 +93,24 @@
             </button>
         </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rohanProfile = document.getElementById('rohan-profile');
+            const audio = new Audio('/Users/rohaniyer/Downloads/resume/mixkit-mouse-click-close-1113.mp3');
+    
+            rohanProfile.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the default link behavior
+                audio.play(); // Play the sound
+    
+                // Add any other actions you want to perform when the profile is clicked
+                // For example, navigating to a different page or showing a different view
+                setTimeout(() => {
+                    // Your existing code for what happens after clicking the profile
+                    // For example: window.location.href = 'resume.html';
+                }, 0); // Adjust this delay as needed
+            });
+        });
+    </script>
 
     <!-- Rohan's Resume Section (initially hidden) -->
     <div id="rohan-resume" class="hidden bg-black text-white w-full">
@@ -240,16 +264,18 @@
                         <p class="text-gray-400">Built financial forecasting and budgeting models using Python on GCP and AWS. Delivered insights for financial sector clients through cloud-deployed ML models.</p>
                     </div>
                 </div>
+                <a href="https://uppercelestials.com/">
                 <div class="bg-gradient-to-tr from-gray-800 to-gray-900 rounded-lg p-5 shadow-lg flex space-x-4">
-                    <a href="https://uppercelestials.com/">
+                    
                     <img alt="Upper Celestials logo" class="w-20 h-20 object-contain rounded" height="80" src="./uppercelestials.png" width="80"/>
                     <div>  
-                        <h3 class="text-white font-bold text-lg mb-1">Upper Celestials (Founder)</h3>
+                        <h3 class="text-white font-bold text-lg mb-1">Upper Celestials</h3>
                         <p class="text-gray-400 mb-1 font-semibold">Co-Founder | Feb 2024 – Present</p>
                         <p class="text-gray-400">Created and managed Gen-Z focused luxury fashion brand. Developed Shopify site, executed ad funnels, and handled brand marketing.</p>
                     </div>
-                </a>
+                
                 </div>
+                </a>
             </div>
         </section>
 
